@@ -21,7 +21,7 @@ const Navbar = () => {
                     <ul className="flex items-center">
                         {/* <NavLink className='flex items-center rounded-sm font-semibold text-base text-white bg-green-800 py-3 px-4 ' to={"/"}> <PiHouseLineThin className='mr-0.5' />home</NavLink> */}
                         <li>
-                             <NavLink onClick={()=> setActive("home")} className={`${active === "home" ? "flex items-center rounded-sm font-semibold text-base text-white bg-green-800 py-3 px-4 " : "flex items-center rounded-sm font-semibold text-base text-[#64748B] py-3 px-4"}`} ><PiHouseLineThin className='mr-0.5' />home</NavLink>
+                             <NavLink to={'/'} onClick={()=> setActive("home")} className={`${active === "home" ? "flex items-center rounded-sm font-semibold text-base text-white bg-green-800 py-3 px-4 " : "flex items-center rounded-sm font-semibold text-base text-[#64748B] py-3 px-4"}`} ><PiHouseLineThin className='mr-0.5' />home</NavLink>
                         </li>
                         <li>
                             <NavLink onClick={()=> setActive("timeline")} className={`${active === "timeline" ? "flex items-center rounded-sm font-semibold text-base text-white bg-green-800 py-3 px-4" : "flex items-center rounded-sm font-semibold text-base text-[#64748B] py-3 px-4"}`}  to={"/timeline"}><CiClock2 className='mr-0.5' />timeline</NavLink>
