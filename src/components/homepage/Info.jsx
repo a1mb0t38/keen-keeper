@@ -14,14 +14,11 @@ const Info = () => {
         const fetchData = async () =>{
             const res = await fetch('/friends.json');
             const data = await res.json()
-            // console.log(data);
+            
             setFriendsInfo(data);
         }
         fetchData()
     },[])
-
-    // console.log(friendsInfo);
-
    
 
     const onTrackCount = friendsInfo.filter(
@@ -37,21 +34,56 @@ const Info = () => {
         <div>
             <div className=' max-w-[1110px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10'>
                 <div className='bg-white shadow-sm p-8 text-center w-full'>
-                    <h1>4</h1>
-                    <p>Total Friends</p>
+                    <h1 className='font-semibold text-3xl text-[#244D3F]'>4</h1>
+                    <p className='text-base text-[#64748B]'>Total Friends</p>
                 </div>
                 <div className='bg-white shadow-sm p-8 text-center w-full'>
-                    <h1>{onTrackCount}</h1>
-                    <p>On Track</p>
+                    <h1 className='font-semibold text-3xl text-[#244D3F]'>{onTrackCount}</h1>
+                    <p className='text-base text-[#64748B]'>On Track</p>
                 </div>
                 <div className='bg-white shadow-sm p-8 text-center w-full'>
-                    <h1>{needAttention}</h1>
-                    <p>Need Attention</p>
+                    <h1 className='font-semibold text-3xl text-[#244D3F]'>{needAttention}</h1>
+                    <p className='text-base text-[#64748B]'>Need Attention</p>
                 </div>
                 <div className='bg-white shadow-sm p-8 text-center w-full'>
-                    <h1>{friendsInfo.length}</h1>
-                    <p>Interactions This Month</p>
+                    <h1 className='font-semibold text-3xl text-[#244D3F]'>{friendsInfo.length}</h1>
+                    <p className='text-base text-[#64748B]'>Interactions This Month</p>
                 </div>
+            </div>
+            <div className='max-w-[1110px] mx-auto border-b border-[#E9E9E9] mt-10'>
+
+            </div>
+            <div className='max-w-[1110px] mx-auto mt-10'>
+                <p className='text-left mb-4 font-semibold text-2xl text-black'>Your Friends</p>
+            </div>
+
+            <div className='max-w-[1110px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  pt-10 gap-6 mb-20'>
+                {
+                friendsInfo.map(friend=> {
+                    return <div key={friend.id}> 
+                       
+                        <div className=' max-w-[260px] h-[254px] bg-white shadow-sm rounded-tr-lg text-center'>
+                            <div className='flex items-center justify-center mb-3'>
+                                <img className='max-w-[80px] h-[80px] rounded-full' src={friend.picture} alt="" />
+                            </div>
+                            <p className='font-semibold textarea-lg text-black'>{friend.name}</p>
+                            <p className='mt-2 textarea-sm text-[#64748B]'>{friend.days_since_contact} ago</p>
+                            <div className='flex items-center justify-center gap-2 py-2'>
+                                {
+                                friend.tags.map((tag,ind)=> {
+                                    return <button className='py-1.5 px-2 bg-[#CBFADB] rounded-full text-black textarea-sm font-medium' key={ind}>{tag}</button>
+                                })
+                            }
+                            </div>
+
+                           {
+                                friend.status === "almost due" ? (<button className='py-1.5 px-2 bg-[#EFAD44] text-white font-medium textarea-sm rounded-full'>{friend.status}</button>) : friend.status === "overdue" ? (<button className='py-1.5 px-2 bg-[#EF4444] text-white font-medium textarea-sm rounded-full'>{friend.status}</button>) : (<button className='py-1.5 px-2 bg-[#244D3F] text-white font-medium textarea-sm rounded-full'>{friend.status}</button>)
+                           }
+                            
+                        </div>
+                    </div>
+                })
+            }
             </div>
         </div>
     );
