@@ -39,7 +39,7 @@ const FriendsDetails = () => {
 
     return (
         <div>
-            <div className='max-w-[1110px] mx-auto flex items-center gap-6 my-20'>
+            <div className='max-w-[1110px] mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-6 my-20'>
                 <div>
                     <div className='text-center p-6 space-y-3 bg-white shadow-sm rounded-lg'>
                         <div className='flex items-center justify-center'>
@@ -75,7 +75,7 @@ const FriendsDetails = () => {
 
                 </div>
                 <div className='space-y-6'>
-                    <div className='grid grid-cols-3 gap-6 text-center'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center'>
                         <div className='py-8 px-4 bg-white shadow-sm rounded-lg'>
                             <h1 className='font-semibold text-3xl text-[#244D3F]'>{expectedFriend.days_since_contact}</h1>
                             <p className='text-[18px] text-[#64748B]'>Days Since Contact</p>
@@ -99,7 +99,7 @@ const FriendsDetails = () => {
 
                     <div className='p-6 space-y-4 bg-white shadow-sm rounded-lg'>
                         <p className='font-medium text-[20px] text-[#244D3F]'>Quick Check-In</p>
-                        <div className='grid grid-cols-3 gap-4'>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                             <div onClick={handleTimelineCall} className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2 cursor-pointer'>
                                 <LuPhoneCall />
                                 <p>Call</p>
