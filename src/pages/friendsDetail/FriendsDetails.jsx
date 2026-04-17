@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router';
 import useData from '../../hooks/useData';
 import { CircleLoader } from 'react-spinners';
@@ -8,17 +8,18 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { LuPhoneCall } from 'react-icons/lu';
 import { MdOutlineTextsms } from 'react-icons/md';
 import { PiVideoCameraBold } from 'react-icons/pi';
+import { TimelineContexts } from '../../context/ContextProvider';
+import { toast } from 'react-toastify';
 
 
 const FriendsDetails = () => {
 
     const { id } = useParams()
     const { friendsInfo, loading } = useData();
-    // console.log(id, "params");
-    // console.log(friendsInfo, loading);
-
     const expectedFriend = friendsInfo.find(friend => String(friend.id) === id)
     
+    // const [timeline, setTimeline] = useState([])
+    const {timeline, setTimeline} = useContext(TimelineContexts)
 
     if (loading) {
         return <div className='flex items-center justify-center mb-8'>
@@ -28,6 +29,13 @@ const FriendsDetails = () => {
     if (!expectedFriend) {
         return <p>Friend not found</p>
     }
+
+    const handleTimelineCall = () =>{
+        setTimeline([...timeline, expectedFriend])
+        toast.success(`${expectedFriend.name} added to time line`);
+
+    }
+    // console.log(timeline, "timeline");
 
     return (
         <div>
@@ -92,15 +100,15 @@ const FriendsDetails = () => {
                     <div className='p-6 space-y-4 bg-white shadow-sm rounded-lg'>
                         <p className='font-medium text-[20px] text-[#244D3F]'>Quick Check-In</p>
                         <div className='grid grid-cols-3 gap-4'>
-                            <div className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2'>
+                            <div onClick={handleTimelineCall} className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2 cursor-pointer'>
                                 <LuPhoneCall />
                                 <p>Call</p>
                             </div>
-                            <div className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2'>
+                            <div onClick={handleTimelineCall} className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2 cursor-pointer'>
                                 <MdOutlineTextsms />
                                 <p>Text</p>
                             </div>
-                            <div className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2'>
+                            <div onClick={handleTimelineCall} className='flex flex-col justify-center items-center p-4 bg-white shadow-sm rounded-lg space-y-2 cursor-pointer'>
                                 <PiVideoCameraBold />
                                 <p>Video</p>
                             </div>
