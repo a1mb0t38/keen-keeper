@@ -1,5 +1,42 @@
 # React + Vite
 
+# 🌟 KeenKeeper — Keep Your Friendships Alive
+
+## 📖 Description
+
+live Link: https://gilded-croissant-72ff17.netlify.app/
+
+KeenKeeper is a responsive React web application that helps you maintain meaningful relationships by tracking your interactions with friends. It shows when you last contacted someone, reminds you when they need attention, and keeps a timeline of your communication history.
+
+---
+
+## 🛠️ Technologies Used
+
+* React.js
+* Tailwind CSS
+* React Router
+* Recharts
+* React Toastify
+
+---
+
+## ✨ Key Features
+
+### 1. Friend Tracking Dashboard
+
+View all your friends in a clean UI with their contact status (on-track, almost due, overdue), tags, and last interaction time.
+
+### 2. Interaction Timeline
+
+Log and view all interactions (Call, Text, Video) with automatic updates and real-time tracking.
+
+### 3. Friendship Analytics
+
+Visualize your communication habits using charts to better understand how you stay connected.
+
+---
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
